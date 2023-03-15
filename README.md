@@ -1,6 +1,6 @@
-# Discord Bot
+# Discord Auto-Reactor Bot
 
-> Very lightweight Discord bot.
+> Very lightweight Discord bot that automatically reacts to messages.
 Written in TypeScript, based on [discord.js](https://discord.js.org).
 
 ---
