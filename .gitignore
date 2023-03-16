@@ -16,4 +16,4 @@
 !.prettierrc.json
 
 yarn-error.log
-dist/**
+dist/
