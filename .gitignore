@@ -6,6 +6,7 @@
 !.eslintrc.json
 !.gitattributes
 !.gitconfig
+!.github
 !.gitignore
 !.gitkeep
 !/**/.gitkeep
