@@ -30,7 +30,7 @@ We'll tackle each in turn and guide you through the whole ordeal.
 
 #### NVM
 
-First, we'll install `nvm`, Node Version Manager
+First, we'll install `nvm`, Node Version Manager.
 
 Run the following script or check the complete instructions [here](https://github.com/nvm-sh/nvm#install--update-script).
 
@@ -42,13 +42,13 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash
 
 ##### Setup
 
-Install Node version
+Install Node version:
 
 ```sh
 nvm install 18.15
 ```
 
-Use the version required in the project
+Use the version required in the project:
 
 ```sh
 nvm use
@@ -56,7 +56,7 @@ nvm use
 
 #### PNPM
 
-Install PNPM
+Install PNPM:
 
 ```sh
 npm install -g pnpm
