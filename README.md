@@ -45,7 +45,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash
 Install Node version:
 
 ```sh
-nvm install 18.15
+nvm install
 ```
 
 Use the version required in the project:
