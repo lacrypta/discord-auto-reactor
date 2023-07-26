@@ -1,14 +1,14 @@
 # Discord Auto-Reactor Bot
 
 > Very lightweight Discord bot that automatically reacts to messages.
-Written in TypeScript, based on [discord.js](https://discord.js.org).
+> Written in TypeScript, based on [discord.js](https://discord.js.org).
 
 ---
 
 1. [Setup](#setup)
     1. [Development Environment Setup](#development-environment-setup)
-        1. [DirEnv](#direnv)
-        2. [Yarn PnP Installs](#yarn-pnp-installs)
+        1. [NVM](#nvm)
+        2. [PNPM](#pnpm)
     2. [Discord Integration](#discord-integration)
         1. [The Discord Bot Token](#the-discord-bot-token)
         2. [The Discord Guild ID](#the-discord-guild-id)
@@ -28,41 +28,39 @@ We'll tackle each in turn and guide you through the whole ordeal.
 
 ### Development Environment Setup
 
-First, we'll install `direnv`, then we'll set VSCode up to understand [Yarn PnP Installs](https://yarnpkg.com/features/pnp).
+#### NVM
 
-#### DirEnv
+First, we'll install `nvm`, Node Version Manager
 
-To make your life _superbly_ easier, you'll need to install [DirEnv](https://direnv.net).
-This mostly entails installing the `direnv` package in your distro and [hooking DirEnv to your shell](https://direnv.net/docs/hook.html).
-Finally, be sure to allow DirEnv to run on this project's root:
+Run the following script or check the complete instructions [here](https://github.com/nvm-sh/nvm#install--update-script).
 
-```sh
-direnv allow .
-```
-
-If you're using VSCode, consider installing [the `direnv` extension](https://marketplace.visualstudio.com/items?itemName=mkhl.direnv), this will teach VSCode how to read your [`.envrc`](./.envrc) files.
-
-#### Yarn PnP Installs
-
-VSCode needs some help in dealing with Pnp Installs.
-
-To begin, we'll need the [ZipFS](https://marketplace.visualstudio.com/items?itemName=arcanis.vscode-zipfs) VSCode extension (this is required because Yarn PnP Installs keep packages compressed and navigating within them would fail otherwise).
-
-Next, we need to update all Yarn packages:
+##### Install
 
 ```sh
-yarn
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash
 ```
 
-Now we need to ask Yarn to generate the required SDKs:
+##### Setup
+
+Install Node version
 
 ```sh
-yarn dlx @yarnpkg/sdks vscode
+nvm install 18.15
 ```
 
-At this point, VSCode will ask us if we want to use the Workspace-provided Typescript compiler, to which we should answer yes.
+Use the version required in the project
 
-If you have any troubles with this step, please see [the official Yarn documentation](https://next.yarnpkg.com/getting-started/editor-sdks#vscode) for more details.
+```sh
+nvm use
+```
+
+#### PNPM
+
+Install PNPM
+
+```sh
+npm install -g pnpm
+```
 
 ### Discord Integration
 
@@ -77,49 +75,51 @@ We'll treat each in turn.
 
 The first thing you need to do is create a new application on the [Discord Developer Portal](https://discord.com/developers):
 
-![New Discord Application](./assets/new-discord-application.png "New Discord Application")
+![New Discord Application](./assets/new-discord-application.png 'New Discord Application')
 
 Give your new application a flashy new name:
 
-![Create Discord Application](./assets/create-discord-applicatoin.png "Create Discord Application")
+![Create Discord Application](./assets/create-discord-applicatoin.png 'Create Discord Application')
 
 <!-- markdownlint-disable-next-line MD033 -->
+
 <a id="copy-application-id"></a>Be sure to copy the application ID, we'll need it later:
 
-![Copy Discord Application ID](./assets/copy-discord-application-id.png "Copy Discord Application ID")
+![Copy Discord Application ID](./assets/copy-discord-application-id.png 'Copy Discord Application ID')
 
 Now let's add a bot to your newly-created application:
 
-![New Application Bot](./assets/new-application-bot.png "New Application Bot")
+![New Application Bot](./assets/new-application-bot.png 'New Application Bot')
 
 And confirm our choice:
 
-![Confirm Bot Creation](./assets/confirm-bot-creation.png "Confirm Bot Creation")
+![Confirm Bot Creation](./assets/confirm-bot-creation.png 'Confirm Bot Creation')
 
 Give your new boy a flashy new name:
 
-![Name Discord Bot](./assets/name-discord-bot.png "Name Discord Bot")
+![Name Discord Bot](./assets/name-discord-bot.png 'Name Discord Bot')
 
 Finally, let's give the bot the **Message Content Intent** Privileged Gateway Intent:
 
-![Configure Discord Bot](./assets/configure-discord-bot.png "Configure Discord Bot")
+![Configure Discord Bot](./assets/configure-discord-bot.png 'Configure Discord Bot')
 
 Although not technically required, you may verify that the permission bitmap value we'll use further down (ie. `68672`) does not contain any spurious permissions by checking the Bot Permissions Calculator:
 
-![Discord Bot Permissions](./assets/discord-bot-permissions.png "Discord Bot Permissions")
+![Discord Bot Permissions](./assets/discord-bot-permissions.png 'Discord Bot Permissions')
 
 After all this fooling around, let's wrap up the bot integration by resetting the bot token:
 
-![Reset Discord Bot Token](./assets/reset-discord-bot-token.png "Reset Discord Bot Token")
+![Reset Discord Bot Token](./assets/reset-discord-bot-token.png 'Reset Discord Bot Token')
 
 Don't mind the FUD:
 
-![Confirm Reset Token](./assets/confirm-reset-token.png "Confirm Reset Token")
+![Confirm Reset Token](./assets/confirm-reset-token.png 'Confirm Reset Token')
 
 <!-- markdownlint-disable-next-line MD033 -->
+
 <a id="discord-bot-token"></a>And copy the value revealed:
 
-![Copy Discord Bot Token](./assets/copy-discord-bot-token.png "Copy Discord Bot Token")
+![Copy Discord Bot Token](./assets/copy-discord-bot-token.png 'Copy Discord Bot Token')
 
 Now, it's **very** important that you paste this value in a safe place, at least until we finish the integration and configuration steps, since we'll need it [further down](#env-setup).
 
@@ -128,7 +128,7 @@ Now, it's **very** important that you paste this value in a safe place, at least
 If you've managed this far, this is going to be a breeze.
 Simply go to the Discord application, look for the server you want the bot to appear, right-click on it, and select "Copy ID":
 
-![Copy Discord Guild ID](./assets/copy-discord-guild-id.png "Copy Discord Guild ID")
+![Copy Discord Guild ID](./assets/copy-discord-guild-id.png 'Copy Discord Guild ID')
 
 Paste this value somewhere safe, we'll need it [further down](#env-setup).
 
@@ -143,11 +143,11 @@ https://discord.com/oauth2/authorize?client_id=YOUR_DISCORD_APPLICATION_ID&scope
 
 Navigating to it will greet you with:
 
-![Invite Bot to Discord](./assets/invite-bot-to-discord.png "Invite Bot to Discord")
+![Invite Bot to Discord](./assets/invite-bot-to-discord.png 'Invite Bot to Discord')
 
 Finally, confirm the permissions set above:
 
-![Authorize Bot](./assets/authorize-bot.png "Authorize Bot")
+![Authorize Bot](./assets/authorize-bot.png 'Authorize Bot')
 
 And... you're done!
 **Congratulations!**
