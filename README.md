@@ -179,15 +179,9 @@ You need to change the placeholder values (ie. `YOUR_...` strings) to the values
 1. replace `YOUR_DISCORD_BOT_TOKEN` with the value we copied [here](#discord-bot-token),
 2. replace `YOUR_DISCORD_GUILD_ID` with the value we copied [here](#the-discord-guild-id),
 
-Finally, let's ask DirEnv to reload our environment to pick up the new `.env` changes:
-
-```sh
-direnv reload
-```
-
 ## Running the Bot
 
-To run the bot in development mode type `yarn dev`.
+To run the bot in development mode type `pnpm dev`.
 This should only be used during the development process, use the production mode for deployments.
 
-To run the bot in production mode type `yarn prod`, this will compile the typescript code and execute the generated javascript code with Node.js.
+To run the bot in production mode type `pnpm prod`, this will compile the typescript code and execute the generated javascript code with Node.js.
