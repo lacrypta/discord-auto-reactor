@@ -23,8 +23,8 @@ devDependencies:
     specifier: ^8.39.0
     version: 8.39.0
   prettier:
-    specifier: ^2.8.4
-    version: 2.8.4
+    specifier: ^3.0.0
+    version: 3.0.0
   ts-node-dev:
     specifier: ^2.0.0
     version: 2.0.0(@types/node@18.15.3)(typescript@4.9.5)
@@ -891,9 +891,9 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier@2.8.4:
-    resolution: {integrity: sha512-vIS4Rlc2FNh0BySk3Wkd6xmwxB0FpOndW5fisM5H8hsZSxU2VWVB5CWIkIjWvrHjIhxk2g3bfMKM87zNTrZddw==}
-    engines: {node: '>=10.13.0'}
+  /prettier@3.0.0:
+    resolution: {integrity: sha512-zBf5eHpwHOGPC47h0zrPyNn+eAEIdEzfywMoYn2XPi0P44Zp0tSq64rq0xAREh4auw2cJZHo9QUob+NqCQky4g==}
+    engines: {node: '>=14'}
     hasBin: true
     dev: true
 
